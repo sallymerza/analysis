@@ -32,10 +32,13 @@ You can put links to commits like this: [My favorite commit](https://github.com/
 
 
 ###Conclusions
+Even though I spend a lot of time on this project, I do not think that I over estimated it because I am not an experienced Java programmer. I think that I will spend less time in the future learning about java syntax, because I have learned a great deal during the past 10 days. I need to continue doing that still. Most of my time was spent on coding as I followed the guidance from the plan phase. 
 
-Even though I spend a lot of time on this project, I do not think that I over estimated it because I am not an experienced Java programmer. I think that I will spend less time in the future learning about java syntax, becuase I have learned a great deal during the past 10 days. I need to continoue doing that still. Most of my time was spent on coding as I followed the guidlaince from the plan phase. Debugging took a lot of my time too, but I think that as I do more reading from the leacture, I will spend less time of the kind of mistakes I made in this project. I need to continoue make my the results of the planning phase as clear, and as comprehensive as possible, becuase this helped avoid project creep. I had a very clear idea of where I am on the project, and what outcome I should expect from each phase. 
+Debugging took a lot of my time too, but I think that as I do more reading from the lecture, I will spend less time of the kind of mistakes I made in this project. I need to continue make my the results of the planning phase as clear, and as comprehensive as possible, because this helped avoid project creep. I had a very clear idea of where I am on the project, and what outcome I should expect from each phase.
 
-My project contains many booleans that indicate when a function should be used and in which scene of how many times. If I could work on my project now, I would like to change these switches, and use them less often in my design. Instead, I would like to make my design more readable and less realiable on these switches by using a different mechanincs to "activate" a method. 
+
+My project contains many Booleans that indicate when a function should be used and in which scene of how many times. If I could work on my project now, I would like to change these switches, and use them less often in my design. Instead, I would like to make my design more readable and less realiable on these switches by using a different mechanics to "activate" a method.
+
 Design Review
 =======
 

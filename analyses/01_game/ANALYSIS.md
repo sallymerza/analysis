@@ -79,6 +79,116 @@ There are no magic numbers in this function to make it easy to follow. Furthermo
 		}
 ```
 
+2. 
+ButtonClicked() decides which scene to show based on the button clicked. A new scene with a new level or instruction is shown in three out of the four cases. The logic for these cases is similar; the differnce is which class is called when the frame is created and which TimeLine. Each branch of the if statements does the following: If this is the first time the button is clicked, it creates a new frame and a new timeline.Then it initiates the corisponding scene. If the button has been clicked before(i.e a scene has been created before) the it only intiates the corresponding scene. playLevel1 and playLevel2 are Boolean variables that indicate the level to intiate. If these variables are not included, NullPointerException error occurs.
+this is the funciton:
+```java
+ private void ButtonClicked(ActionEvent actionevent) {
+		if (actionevent.getSource()==btn1){
+			if(playLevel1){
+			final KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
+                    e -> myGame.step());
+			Timeline animation = new Timeline();
+			animation.setCycleCount(Timeline.INDEFINITE);
+			animation.getKeyFrames().add(frame);
+			an = animation;
+			animation.play();
+			playLevel1=false;
+			}
+			scene2 = myGame.init(width, height, stage, scene);
+			stage.setScene(scene2);
+			stage.show();
+		}
+		else if (actionevent.getSource()==btn2){
+			if(playLevel2==true){
+			final  KeyFrame frame2 = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
+	                e -> myGame2.step());
+	        Timeline animation2 = new Timeline();
+	        animation2.setCycleCount(Timeline.INDEFINITE);
+	        animation2.getKeyFrames().add(frame2);
+	        an2= animation2;
+	        animation2.play();
+	        playLevel2=false;
+	        }
+			scene3 = myGame2.init(width, height, stage, scene);
+			stage.setScene(scene3);
+			stage.show();
+			}
+		else if (actionevent.getSource()==btn3){
+			System.exit(0);
+		}
+		else if (actionevent.getSource()==btn4){
+			scene4 = myGame3.init(width, height, stage, scene);
+			stage.setScene(scene4);
+			stage.show();
+
+		}
+	}
+
+```
+
+From this: I re-factored this function into three functions in my masterpiece. The first function is called createTimeLine() that takes a frame and creates a timeline and plays its animation. The second method is callInitScene() that takes a scene and an integer. Both are used to identify and intialize the correct scene. 
+
+Bellow is the refactored version of the function:
+
+
+```jave
+
+ private void ButtonClicked(ActionEvent actionevent) {
+		if (actionevent.getSource()==listOFButtons[0]){
+			if(playLevel1){
+				final  KeyFrame frame =  new KeyFrame(Duration.millis(MILLISECOND_DELAY),
+				        e -> myGame.step());
+				createTimeLine(frame);
+				playLevel1=false;
+				}
+			callInitScene(scene2, ONE);
+			}
+		else if (actionevent.getSource()==listOFButtons[ONE]){
+			if(playLevel2==true){
+				final  KeyFrame frame2 =  new KeyFrame(Duration.millis(MILLISECOND_DELAY),
+				        e -> myGame2.step());
+				createTimeLine(frame2);
+				playLevel2=false;
+				}
+			callInitScene(scene3,TWO);
+			}
+		else if (actionevent.getSource()==listOFButtons[THREE]){
+			System.exit(0);
+			}
+		else if (actionevent.getSource()==listOFButtons[TWO]){
+			callInitScene(scene4,THREE);
+			}
+	}
+	
+	private void callInitScene(Scene tempScene, int i) {
+		if(i==ONE){
+			tempScene = myGame.init(width, height, stage, thisScene);
+			}
+		if(i==TWO){
+			tempScene = myGame2.init(width, height, stage, thisScene);
+			}
+		else if(i==THREE){tempScene = myGame3.init(width, height, stage, thisScene);}
+		stage.setScene(tempScene);
+		stage.show();
+	}
+	
+	private void createTimeLine(KeyFrame tempFrame) {
+		Timeline animation = new Timeline();
+		animation.setCycleCount(Timeline.INDEFINITE);
+		animation.getKeyFrames().add(tempFrame);
+		if(playLevel1){
+		an = animation;
+		}
+		if(playLevel2){
+			an2=animation;
+			}
+		animation.play();
+	}
+
+
+```
+
 
 ###Design
 ###Alternate Designs

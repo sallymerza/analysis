@@ -79,8 +79,9 @@ There are no magic numbers in this function to make it easy to follow. Furthermo
 		}
 ```
 
-2. ButtonClicked() decides which scene to show based on the button clicked. A new scene with a new level or instruction is shown in three out of the four cases. The logic for these cases is similar; the differnce is which class is called when the frame is created and which TimeLine. Each branch of the if statements does the following: If this is the first time the button is clicked, it creates a new frame and a new timeline.Then it initiates the corisponding scene. If the button has been clicked before(i.e a scene has been created before) the it only intiates the corresponding scene. playLevel1 and playLevel2 are Boolean variables that indicate the level to intiate. If these variables are not included, NullPointerException error occurs.
-this is the funciton:
+2. ButtonClicked() decides which scene to show based on the button clicked. A new scene with a new level or instruction is shown in three out of the four cases. The logic for these cases is similar; the difference is which class is called when the frame is created and which TimeLine. Each branch of the if  statement does the following: If this is the first time the button is clicked, it creates a new frame and a new timeline.T hen it initiates the corresponding scene. If the button has been clicked before(i.e. a scene has been created before) the it only initiates the corresponding scene. playLevel1 and playLevel2 are Boolean variables that indicate the level to initiate. If these variables are not included, NullPointerException error occurs.
+This is the function:
+
 ```java
  private void ButtonClicked(ActionEvent actionevent) {
 		if (actionevent.getSource()==btn1){
@@ -126,9 +127,10 @@ this is the funciton:
 
 ```
 
-From this, I re-factored this function into three functions in my masterpiece. The first function is called createTimeLine() that takes a frame and creates a timeline and plays its animation. The second method is callInitScene() that takes a scene and an integer. Both are used to identify and intialize the correct scene. 
+From this, I re-factored this function into three functions in my masterpiece. The first function is called createTimeLine() that takes a frame and creates a timeline and plays its animation. The second method is callInitScene() that takes a scene and an integer. Both are used to identify and initialize the correct scene. 
 
-Bellow is the refactored version of the function:
+Bellow is the re-factored version of the function:
+
 
 
 ```jave
@@ -190,6 +192,15 @@ Bellow is the refactored version of the function:
 
 
 ###Design
+
+Overall design:
+
+I tried to separate the project components into classes based on functionality. There are three main classes that represent the main scene, level one, and level two. A player transitions from one scene to the other by clicking on buttons, or by winning, or losing at a level. The game's loop is initiated in main. The two levels contain implementation to methods used only within that class. Any method that is shared between these two classes or any shared object is created in its own class. All the variables and the methods in the other classes are private and are called by getters and setters.
+
+
+To add a new level to the game, you need to create a new frame and a new timeline for it in Main class, and a button. Then from Main class when the button is clicked, it calls the initScene method for that class. initScene takes the stage, scene, scene width, and scene height as parameters, and returns scene. initScene() is used to create all the objects that will be used throughout the game, as well as anything that does not change. For example, the background function is called from within initScene. This will add a new level to the game. Typically a level has a balloon object, background, kits, or birds objects. Since these objects are common to these levels, each one of them is created in its own class and called by a getter function. Each level also has a step function that is called every 16 seconds. This function is similar to an update method. It contains method calls, and has void return type.
+
+
 ###Alternate Designs
 
 Code Masterpiece

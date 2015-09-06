@@ -208,6 +208,13 @@ Medicine kits are objects that appear on both levels of the game. The player has
 
 Functions of this feature create the kits, remove them after a certain time has passed, and there is function that detects when the player collects a kit. I made it a requirement in the design to keep kits class unattached to any other class to make it as flexible as possible. Kits are created into a list, and this list is used through a getter method. 
 
+2. Winning and losing: 
+
+A player wins in level two when he or she collect 15 kits, and reach the hospital. To implement this feature I used a function that returns the number of kits collected at any point and compares it to 15. If this number is reached a Boolean variable is set to true. When the variable is true, the hospital appears from the right side of the stage. The when the player reaches the hospital the game ends, and the player wins. I made the assumption that 15 is the number needed to win a game. This limits the design flexibility in the future if I decide to expand upon the game and let the user specify the number of kits needed to win a game. The function that returns the counter is implemented in Kits class to avoid redundancy. The functions showHospital() and reachedHospital() are implemented in Destination class also to avoid redundancy. 
+
+On the other hand, if a player is hit by the rocks twice, the game ends and the player loses. There is also a counter that keeps track of how many times the player has been hit. When the counter is equal to zero the game ends. This function is implemented in levelTwo class. This assumes that there are only two levels in the game. In the future if more levels are added, it is better to create a class called rocks that include these functions. At this point, since there are only two functions that I need to implement this feature, I have decided to keep them in levelTwo class.  
+
+
 
 
 ###Alternate Designs

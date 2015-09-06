@@ -226,7 +226,7 @@ On the other hand, if a player is hit by the rocks twice, the game ends and the 
 •	What are the three most important bugs that remain in the project's design or implementation?
 
 1. The background image does not always make a smooth transition.
-2. 
+ 
 2. The image boundaries are larger than the image that appears to the user this is why it seems as if the user reaches the hospital early sometimes.
 
 

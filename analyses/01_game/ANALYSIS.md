@@ -42,9 +42,18 @@ Design Review
 
 ###Status
 
-* Bullets are made with asterisks
+I tried to follow naming conventions. I prefixed variables in constructors with "my", I avoided abriviation in most cases, and I named my mothods after what they do. I tried to make my functions short interms of number of lines of codes. In the beginning I had functions that call other functions in a chain, but after I read tutorials online, and as the UTAs advised me, I removed this dependincy by calling all functions pertaining to one class in one function called step. However, that created a problem because not all of these functions are called at the same time. this is why I have a number of if statements that call these functions. 
 
-1. You can order things with numbers.
+I think I have three or four commits in my project. I try to keep my code commit free because to me they are very distracting. I added those commits becuase they were neccessary after I fixed a major bug.
+
+However, my code contains many global variables. One reason I have they variables is that I did not know if it is better to have a global constant even though it is going to be used in one function, or create that constant inside the function  directly. I have some local constants, but the majority of them are global to their class. I made sure that they are all private static final after the lectur. 
+
+I am also not sure if it is better for a function to have many paramters or have getters and setters. More specifically, I have functions that get paramters from different classes, and not always do they need all of these parameters.
+
+
+Describe two pieces of code in detail:
+Describe the purpose of this code in the overall project.
+What makes this code easy (or hard) to read and understand?
 
 ###Design
 

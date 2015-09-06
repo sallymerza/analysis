@@ -20,6 +20,16 @@ The hardest tasks I had to do were trying to figure out how to change between sc
 
 You can put links to commits like this: [My favorite commit](https://github.com/duke-compsci308-fall2015/game_sma45/commit/2da16c355ad002caf998aeaf7b8768240e2a6684)
 
+  I divided my project into three main sections based on functionality or logic in each section. I committed my code every time I finished one of these sections, discovered and fixed a measure bug in current or previous section, or re-factored my code dramatically. Usually the size of a commit included one new class and all of its functions or all the classes on which it depended.  I committed 7 times including a commit for to update Design.txt in the plan phase. I believe that most of my commits messages were meaningful except for one where I write "level one, most functionalities work". Now that I reflect upon it, I do not think that this message is a helpful reference for the future. 
+    
+    
+    Other commit messages are more descriptive of what I actually did, for example there is a commit where I describe it as "code re-factored". I submitted this commit after the class lecture. I went through the entire project, and made changes reflect what we talked about in the class that day. I changed all magic numbers into constants, and made all of my variables privates and created more getters and setters for these variables. Furthermore, I extracted a number of methods from class "level two" into their own class because they are similar in nature.
+    
+    
+    Another commit example is the one labled " level one completed, menue ready, scene changes correctly". This was an important commit becuase as I mentioned before I had trouble figuring out how to change scenes. I also had created an infinite loop becuase I did not create my constructores correclty. I pushed this commit after I went to office hours. I believe that the commit message is very descriptive. The size of the commit was not big interms of nummber of lines of code, but it was important because it fixed a null pointer exception that prevented me from going further in my project.
+    
+    
+
 
   
 

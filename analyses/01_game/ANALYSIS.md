@@ -25,11 +25,9 @@ You can put links to commits like this: [My favorite commit](https://github.com/
 
  Other commit messages are more descriptive of what I actually did, for example there is a commit where I describe it as "code re-factored". I submitted this commit after the class lecture. I went through the entire project, and made changes reflect what we talked about in the class that day. I changed all magic numbers into constants, and made all of my variables privates and created more getters and setters for these variables. Furthermore, I extracted a number of methods from class "level two" into their own class because they are similar in nature.
  
- Another commit example is the one labled " level one completed, menue ready, scene changes correctly". This was an important commit becuase as I mentioned before I had trouble figuring out how to change scenes. I also had created an infinite loop becuase I did not create my constructores correclty. I pushed this commit after I went to office hours. I believe that the commit message is very descriptive. The size of the commit was not big interms of nummber of lines of code, but it was important because it fixed a null pointer exception that prevented me from going further in my project.
+ Another commit example is the one labeled " level one completed, menu ready, scene changes correctly". This was an important commit because as I mentioned before I had trouble figuring out how to change scenes. I also had created an infinite loop because I did not create my constructors correctly. I pushed this commit after I went to office hours. I believe that the commit message is very descriptive. The size of the commit was not big in terms of number of lines of code, but it was important because it fixed a null pointer exception that prevented me from going further in my project.
 
   
-
-
 
 ###Conclusions
 Even though I spend a lot of time on this project, I do not think that I over estimated it because I am not an experienced Java programmer. I think that I will spend less time in the future learning about java syntax, because I have learned a great deal during the past 10 days. I need to continue doing that still. Most of my time was spent on coding as I followed the guidance from the plan phase. 

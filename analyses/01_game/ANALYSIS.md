@@ -18,7 +18,7 @@ The hardest tasks I had to do were trying to figure out how to change between sc
 
 ###Commits
 
-You can put links to commits like this: [My favorite commit](https://github.com/duke-compsci308-fall2015/example_bins/commit/7be1fe10327f20a14293ef39fddd9f75b7359e43)
+You can put links to commits like this: [My favorite commit](https://github.com/duke-compsci308-fall2015/game_sma45/commit/2da16c355ad002caf998aeaf7b8768240e2a6684)
 
 ###Conclusions
 

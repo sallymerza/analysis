@@ -223,6 +223,11 @@ On the other hand, if a player is hit by the rocks twice, the game ends and the 
 
 2.The second design decision I made was to make the stage un-resizable. I decided to do this to ensure that I can use stage width and height as parameters in my methods. Off course this means that the user cannot make the stage larger or smaller, but at the same time this decision helped use precise dimensions. Prior to that I could make the stage limit and the balloon used to go of stage. 
 
+•	What are the three most important bugs that remain in the project's design or implementation?
+1. The background image does not always make a smooth transition.
+2. The image boundaries are larger than the image that appears to the user this is why it seems as if the user reaches the hospital early sometimes.
+
+
 
 Code Masterpiece
 ================

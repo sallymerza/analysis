@@ -219,6 +219,11 @@ On the other hand, if a player is hit by the rocks twice, the game ends and the 
 
 ###Alternate Designs
 
+1. I designed the  background in a way that makes it appear to be moving as the balloon moves. The image that I chose has width of 1920 pixels. My frame rate is 16 frame per second. This means that after less than one minute the background scrolls out of the stage. From watching tutorials online I had the idea to find out where the image ends and reset it. This caused a problem because the transition is not smooth. In the current design I use two instances of the image and substitute them once one of them reaches the end of the stage. This works very well for the first two transitions, afterwards there is a one second delay where the images do not coincide. I do not know why exactly. An alternate design is to try what I found out on an online tutorial where they use a mod function to return the precise pixel where the image ends. 
+
+2.The second design decision I made was to make the stage un-resizable. I decided to do this to ensure that I can use stage width and height as parameters in my methods. Off course this means that the user cannot make the stage larger or smaller, but at the same time this decision helped use precise dimensions. Prior to that I could make the stage limit and the balloon used to go of stage. 
+
+
 Code Masterpiece
 ================
 

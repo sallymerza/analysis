@@ -200,6 +200,15 @@ I tried to separate the project components into classes based on functionality. 
 
 To add a new level to the game, you need to create a new frame and a new timeline for it in Main class, and a button. Then from Main class when the button is clicked, it calls the initScene method for that class. initScene takes the stage, scene, scene width, and scene height as parameters, and returns scene. initScene() is used to create all the objects that will be used throughout the game, as well as anything that does not change. For example, the background function is called from within initScene. This will add a new level to the game. Typically a level has a balloon object, background, kits, or birds objects. Since these objects are common to these levels, each one of them is created in its own class and called by a getter function. Each level also has a step function that is called every 16 seconds. This function is similar to an update method. It contains method calls, and has void return type.
 
+Describe two features from the assignment specification in detail:
+
+1. Characters that interact with the player: Medicine Kits
+
+Medicine kits are objects that appear on both levels of the game. The player has to collect enough of them to win a level. Class Kits contain all the variables and methods needed to create, make kits interactive. I put method implementation in this class to ensure flexibility because it is common to more than one other class. At first I had methods that are implemented in level one, but later I decided to put all of them in one class. 
+
+Functions of this feature create the kits, remove them after a certain time has passed, and there is function that detects when the player collects a kit. I made it a requirement in the design to keep kits class unattached to any other class to make it as flexible as possible. Kits are created into a list, and this list is used through a getter method. 
+
+
 
 ###Alternate Designs
 

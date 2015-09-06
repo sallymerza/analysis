@@ -79,8 +79,7 @@ There are no magic numbers in this function to make it easy to follow. Furthermo
 		}
 ```
 
-2. 
-ButtonClicked() decides which scene to show based on the button clicked. A new scene with a new level or instruction is shown in three out of the four cases. The logic for these cases is similar; the differnce is which class is called when the frame is created and which TimeLine. Each branch of the if statements does the following: If this is the first time the button is clicked, it creates a new frame and a new timeline.Then it initiates the corisponding scene. If the button has been clicked before(i.e a scene has been created before) the it only intiates the corresponding scene. playLevel1 and playLevel2 are Boolean variables that indicate the level to intiate. If these variables are not included, NullPointerException error occurs.
+2. ButtonClicked() decides which scene to show based on the button clicked. A new scene with a new level or instruction is shown in three out of the four cases. The logic for these cases is similar; the differnce is which class is called when the frame is created and which TimeLine. Each branch of the if statements does the following: If this is the first time the button is clicked, it creates a new frame and a new timeline.Then it initiates the corisponding scene. If the button has been clicked before(i.e a scene has been created before) the it only intiates the corresponding scene. playLevel1 and playLevel2 are Boolean variables that indicate the level to intiate. If these variables are not included, NullPointerException error occurs.
 this is the funciton:
 ```java
  private void ButtonClicked(ActionEvent actionevent) {
@@ -127,7 +126,7 @@ this is the funciton:
 
 ```
 
-From this: I re-factored this function into three functions in my masterpiece. The first function is called createTimeLine() that takes a frame and creates a timeline and plays its animation. The second method is callInitScene() that takes a scene and an integer. Both are used to identify and intialize the correct scene. 
+From this, I re-factored this function into three functions in my masterpiece. The first function is called createTimeLine() that takes a frame and creates a timeline and plays its animation. The second method is callInitScene() that takes a scene and an integer. Both are used to identify and intialize the correct scene. 
 
 Bellow is the refactored version of the function:
 

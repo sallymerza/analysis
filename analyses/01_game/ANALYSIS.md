@@ -41,36 +41,46 @@ Design Review
 =======
 
 ###Status
+	
+I tried to follow naming conventions. I prefixed variables in constructors with "my", I avoided abbreviation in most cases, and I named my methods after what they do. I tried to make my functions short in terms of number of lines of codes. In the beginning I had functions that call other functions in a chain, but after I read tutorials online, and as the UTAs advised me, I removed this dependency by calling all functions pertaining to one class in one function called step. However, that created a problem because not all of these functions are called at the same time. This is why I have a number of if statements that calls these functions. 
 
-I tried to follow naming conventions. I prefixed variables in constructors with "my", I avoided abriviation in most cases, and I named my mothods after what they do. I tried to make my functions short interms of number of lines of codes. In the beginning I had functions that call other functions in a chain, but after I read tutorials online, and as the UTAs advised me, I removed this dependincy by calling all functions pertaining to one class in one function called step. However, that created a problem because not all of these functions are called at the same time. this is why I have a number of if statements that call these functions. 
+I think I have three or four commits in my project. I try to keep my code commit free because to me they are very distracting. I added those commits because they were necessary after I fixed a major bug.
 
-I think I have three or four commits in my project. I try to keep my code commit free because to me they are very distracting. I added those commits becuase they were neccessary after I fixed a major bug.
+However, my code contains many global variables. One reason I have they variables is that I did not know if it is better to have a global constant even though it is going to be used in one function, or create that constant inside the function directly. I have some local constants, but the majority of them are global to their class. I made sure that they are all private static final after the lecture. 
 
-However, my code contains many global variables. One reason I have they variables is that I did not know if it is better to have a global constant even though it is going to be used in one function, or create that constant inside the function  directly. I have some local constants, but the majority of them are global to their class. I made sure that they are all private static final after the lectur. 
-
-I am also not sure if it is better for a function to have many paramters or have getters and setters. More specifically, I have functions that get paramters from different classes, and not always do they need all of these parameters.
+I am also not sure if it is better for a function to have many parameters or have getters and setters. More specifically, I have functions that get parameters from different classes, and not always do they need all of these parameters.
 
 
 Describe two pieces of code in detail:
+
 Describe the purpose of this code in the overall project.
+
 What makes this code easy (or hard) to read and understand?
 
-###Design
+1. Method provideProtection() in levelTwo class:
+This method is called from step(). In provideProtectio(), the for loop compares the boundaries of the two floating islands in the scene to the boundaries of any falling rock. If they intersect, the rock's visibility is set to false to show the effect, and from that moment on the rock becomes harmless. The rocks are stored in a a list of type ImageView. The islands are stored in an array of ImageView type of size 2. It was a design choice to put the rocks in a list and the islands in an array because the number of rocks is not a constant unlike that of the islands. 
 
-You can put blocks of code in here like this:
+The first line of the method protects the code from nullPointerException by making sure that the two lists are called only when they are not empty because the function is called every 16 seconds throughout the game. The two nested for loops compare every rock to both of the islands. I used for loops to avoid redundancy. Finally only when the boundary of a rock and an island intersect, and the rock is visible, the condition is set true, and the rock is made invisible.
+
+There are no magic numbers in this function to make it easy to follow. Furthermore, this method is short and has a very specific functionality. This method does not call any other method to avoid dependency.
+
+
 ```java
-    /**
-     * Returns sum of all values in given list.
-     */
-    public int getTotal (Collection<Integer> data) {
-        int total = 0;
-        for (int d : data) {
-            total += d;
-        }
-        return total;
-    }
+   private void provideProtection() {
+		if(rocksList.size()>0 && islands.returnIslandArray().length>0){
+			for(ImageView rok: rocksList){
+				for(int i =0; i<TWO; i++){
+					Boolean condition= rok.getBoundsInParent().intersects(islands.returnIslandArray()[i].getBoundsInParent())&&(rok.isVisible()==true);
+					if(condition){
+						rok.setVisible(false);
+					}
+				}
+			}
+		}
 ```
 
+
+###Design
 ###Alternate Designs
 
 Code Masterpiece

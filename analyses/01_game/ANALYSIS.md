@@ -237,6 +237,17 @@ Code Masterpiece
 Class Main:
 
 ```java
+
+//This entire file is part of my masterpiece.
+//Sally Al Khamees
+/**
+ *
+ * @author Sally Merza
+ *  CS 308
+ *  Project 01
+ *
+ */
+ 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;

@@ -234,4 +234,172 @@ On the other hand, if a player is hit by the rocks twice, the game ends and the 
 
 Code Masterpiece
 ================
+Class Main:
 
+```java
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
+
+public class Main extends Application {
+    public static final int width =800;
+    public static final int height =555;
+    public static final int FRAMES_PER_SECOND = 60;
+    private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
+    private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
+	private static final int BTN_X_POSITION = 350;
+	private static final int ONE=1, TWO=2, THREE=3;
+	private static final int FIFTY = 50;
+
+    private Stage stage;
+    private Timeline an, an2;
+    private Scene   scene2, scene3, scene4;
+    Group root = new Group();
+    private Scene thisScene = new Scene(root,width,height);
+
+    private ImageView myBg= new ImageView();
+    private Boolean playLevel1=true;
+    private Boolean playLevel2=true;
+    private int setSoundOn=0;
+
+
+    public int getSceneWidth(){
+    	return width;
+    }
+    public int getSceneHeight(){
+    	return height;
+    }
+    public Stage returnStage(){
+    	return stage;
+    }
+    public double getElapsedTime() {
+		return SECOND_DELAY;
+		}
+    public Timeline getTimeLine(){
+    	return an2;
+    	}
+
+    private levelOne myGame;
+    private levelTwo myGame2;
+    private HowTo myGame3;
+
+    private GameScene gs = new GameScene();
+    private Button[] listOFButtons = new Button[4];
+
+    @Override
+    public void start (Stage primaryStage) {
+        myGame = new levelOne(this);
+        myGame2 = new levelTwo(this);
+        myGame3 = new HowTo(this);
+
+        primaryStage.setTitle("Air Quest");
+        stage=primaryStage;
+       thisScene=  init(width, height);
+    }
+	public Scene init(int width, int height) {
+
+		myBg=gs.createBg(root);
+		if (setSoundOn==0){
+		playGameSounds();
+		setSoundOn=ONE;
+		}
+        createButtons();
+        stage.setScene(thisScene);
+        stage.setResizable(false);
+        stage.sizeToScene();
+        stage.show();
+        return thisScene;
+	}
+
+	public void playGameSounds() {
+		AudioClip game_loop = new AudioClip(getClass().getResource("gameLoop.wav").toString());
+		game_loop.setCycleCount(AudioClip.INDEFINITE);
+		game_loop.play();
+	}
+
+    private void ButtonClicked(ActionEvent actionevent) {
+		if (actionevent.getSource()==listOFButtons[0]){
+			if(playLevel1){
+				final  KeyFrame frame =  new KeyFrame(Duration.millis(MILLISECOND_DELAY),
+				        e -> myGame.step());
+				createTimeLine(frame);
+				playLevel1=false;
+				}
+			callInitScene(scene2, ONE);
+			}
+		else if (actionevent.getSource()==listOFButtons[ONE]){
+			if(playLevel2==true){
+				final  KeyFrame frame2 =  new KeyFrame(Duration.millis(MILLISECOND_DELAY),
+				        e -> myGame2.step());
+				createTimeLine(frame2);
+				playLevel2=false;
+				}
+			callInitScene(scene3,TWO);
+			}
+		else if (actionevent.getSource()==listOFButtons[THREE]){
+			System.exit(0);
+			}
+		else if (actionevent.getSource()==listOFButtons[TWO]){
+			callInitScene(scene4,THREE);
+			}
+	}
+	private void callInitScene(Scene tempScene, int i) {
+		if(i==ONE){
+			tempScene = myGame.init(width, height, stage, thisScene);
+			}
+		if(i==TWO){
+			tempScene = myGame2.init(width, height, stage, thisScene);
+			}
+		else if(i==THREE){tempScene = myGame3.init(width, height, stage, thisScene);}
+		stage.setScene(tempScene);
+		stage.show();
+	}
+	private void createTimeLine(KeyFrame tempFrame) {
+		Timeline animation = new Timeline();
+		animation.setCycleCount(Timeline.INDEFINITE);
+		animation.getKeyFrames().add(tempFrame);
+		if(playLevel1){
+		an = animation;
+		}
+		if(playLevel2){
+			an2=animation;
+			}
+		animation.play();
+	}
+
+
+	private void createButtons() {
+
+	    double layoutY=height/TWO-FIFTY;
+
+	    for(int i=0; i<listOFButtons.length; i++){
+	    	listOFButtons[i]= new Button();
+	    	listOFButtons[i].setLayoutX(BTN_X_POSITION);
+	    	listOFButtons[i].setOnAction(e -> ButtonClicked(e));
+	    	listOFButtons[i].setLayoutY(layoutY+i*FIFTY);
+	    	}
+
+	    listOFButtons[0].setText("Level 1");
+	    listOFButtons[ONE].setText("Level 2");
+	    listOFButtons[TWO].setText("How To");
+	    listOFButtons[THREE].setText("Exit");
+
+        root.getChildren().addAll(listOFButtons);
+	}
+
+    public static void main (String[] args) {
+        launch(args);
+    }
+}
+
+
+```

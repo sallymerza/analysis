@@ -414,3 +414,8 @@ public class Main extends Application {
 
 
 ```
+In addition to extracting three functions from buttonClicked() as mentioned before, I re-factored createButtons() method. Before this method consisted of calling four buttons every time either to set their location, dimension, or text. After last week's lecture I started using constants instead of magic numbers. This helped realized that I used numbers that are within factor of each other. I also decided to put them in an array. Both of these changes made it easier to get rid of redundancy by using for loops when possible. As a result this method has become more precise. 
+
+Furthermore, methods in this class are short, and have small functionality. I got rid of chain call in favor of implementing a start() that calls other methods to reduce dependency.  
+
+Finally I used constant and private variables with getters and setters instead of public variables in this class. I also removed unnecessary comments.

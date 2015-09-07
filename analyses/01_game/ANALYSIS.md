@@ -528,3 +528,7 @@ public class Destination {
 
 ```
 
+This class contains all the methods and variables pertain to the destination. In addition to having features similar in design to class Main, this class has very descriptive method names. Furthermore, each of these methods is very specialized. 
+
+There are again no magic number, and no global variables. Instead I used constants and getters and setters.
+

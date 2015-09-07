@@ -421,7 +421,7 @@ Furthermore, methods in this class are short, and have small functionality. I go
 Finally I used constant and private variables with getters and setters instead of public variables in this class. I also removed unnecessary comments.
 
 
-2. Class Destination:
+ Class Destination:
 
 
 ```java

@@ -419,3 +419,112 @@ In addition to extracting three functions from buttonClicked() as mentioned befo
 Furthermore, methods in this class are short, and have small functionality. I got rid of chain call in favor of implementing a start() that calls other methods to reduce dependency.  
 
 Finally I used constant and private variables with getters and setters instead of public variables in this class. I also removed unnecessary comments.
+
+
+2. Class Destination:
+
+
+```java
+
+// This entire file is part of my masterpiece.
+// Sally Al Khamees
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
+import javafx.scene.text.Text;
+
+public class Destination {
+
+	private Group root = new Group();
+	levelTwo myLevelTwo;
+
+	private Boolean whichScene=false;
+	private Boolean showHospital=false;
+
+	private ImageView hospital=new ImageView();
+	private Text showClosingMessage;
+
+	private static final double SPEED= 9*(1.0/60);
+	private static final double HOSPITAL_X_POSITION = 778;
+	private static final double HOSPITAL_Y_POSITION = 555/2;
+	private static final int TWO=2;
+	private static final double HOSPITAL_X_STOP = 645;
+	private static final int KITS_TO_SHOW_DESTINATION=15;
+	private static final String YOU_WON = "You Won!!";
+
+  public Destination(levelTwo l2){
+	  myLevelTwo= l2;
+  }
+	Balloon balloon= new Balloon();
+
+	public void setWhichScene(Boolean arg){
+		whichScene = arg;
+	}
+	public Boolean getWhichScene(){
+		return whichScene;
+	}
+
+
+	public void setShowHospital(Boolean arg){
+		showHospital= arg;
+	}
+	public Boolean getShowHospital(){
+		return showHospital;
+	}
+
+
+	  void createDestination(Group r) {
+		root=r;
+		Image hosp= new Image(getClass().getClassLoader().getResourceAsStream("hospital.png"));
+		hospital = new ImageView(hosp);
+		hospital.setX(HOSPITAL_X_POSITION);
+		hospital.setY(HOSPITAL_Y_POSITION);
+		hospital.setVisible(false);
+		showClosingMessage = new Text();
+		showClosingMessage.setVisible(false);
+		root.getChildren().addAll(hospital, showClosingMessage);
+		}
+
+	  void showDestination(int myCounter) {
+			if(getWhichScene()==true &&(myCounter==KITS_TO_SHOW_DESTINATION)){
+				hospital.setVisible(true);
+				setShowHospital(true);
+
+				}
+			}
+
+	  void moveHospital() {
+			if(hospital.isVisible()==true){
+				if(hospital.getX()>HOSPITAL_X_STOP){
+				hospital.setX(hospital.getX() - SPEED);
+				}
+				}
+			}
+
+	void reachedHospital(Scene myScene, Balloon b) {
+
+		if(getShowHospital()==true){
+			if(hospital!= null&&b.myBalloon!=null){
+				if (hospital.getBoundsInParent().intersects(b.myBalloon.getBoundsInParent())&&(hospital.isVisible()==true)) {
+					if(showClosingMessage!=null){
+					showClosingMessage.setX(myScene.getWidth()/TWO);
+					showClosingMessage.setY(myScene.getHeight()/TWO);
+					showClosingMessage.setVisible(true);
+					showClosingMessage.setText(YOU_WON);
+					 AudioClip game_loop = new AudioClip(getClass().getResource("win.wav").toString());
+			    		game_loop.play();
+					}
+					if(myLevelTwo.getTimer()==false){
+						myLevelTwo.saveTime(System.nanoTime());
+						myLevelTwo.setTimer(true);
+						}
+					}
+				}
+			}
+		}
+}
+
+```
+
